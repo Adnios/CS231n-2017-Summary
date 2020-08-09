@@ -71,7 +71,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
   3. Choose the hyperparameters that gives the best training values (Average over all folds)
 - **Linear SVM** classifier is an option for solving the image classification problem, but the curse of dimensions makes it stop improving at some point.
 - **Logistic regression** is a also a solution for image classification problem, but image classification problem is non linear!
-- Linear classifiers has to run the following equation: `Y = wX + b` 
+- Linear classifiers has to run the following equation: `Y = wX + b`
   - shape of `w` is the same as `x` and shape of `b` is 1.
 - We can add 1 to X vector and remove the bias so that: `Y = wX`
   - shape of `x` is `oldX+1` and `w` is the same as `x`
@@ -203,7 +203,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Then graph can be represented this way:
 
     - ```
-      X         
+      X
         \
          (+)--> q ---(*)--> f
         /           /
@@ -271,7 +271,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 - So to define neural network as a function:
 
   - (Before) Linear score function: `f = Wx`
-  - (Now) 2-layer neural network:    `f = W2*max(0,W1*x)` 
+  - (Now) 2-layer neural network:    `f = W2*max(0,W1*x)`
     - Where max is the RELU non linear function
   - (Now) 3-layer neural network:    `f = W3*max(0,W2*max(0,W1*x)`
   - And so on..
@@ -325,9 +325,9 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
       - Input image                        `(32,32,3)`
       - filter size                              `(5,5,3)`
         - We apply 6 filters. The depth must be three because the input map has depth of three.
-      - Output of Conv.                 `(28,28,6)` 
+      - Output of Conv.                 `(28,28,6)`
         - if one filter it will be   `(28,28,1)`
-      - After RELU                          `(28,28,6)` 
+      - After RELU                          `(28,28,6)`
       - Another filter                     `(5,5,6)`
       - Output of Conv.                 `(24,24,10)`
   - It turns out that convNets learns in the first layers the low features and then the mid-level features and then the high level features.
@@ -363,8 +363,8 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Usually a power of 2.
   - Spatial content size F.
     - 3,5,7 ....
-  - The stride S. 
-    - Usually 1 or 2        (If the stride is big there will be a downsampling but different of pooling) 
+  - The stride S.
+    - Usually 1 or 2        (If the stride is big there will be a downsampling but different of pooling)
   - Amount of Padding
     - If we want the input shape to be as the output shape, based on the F if 3 its 1, if F is 5 the 2 and so on.
 - Pooling makes the representation smaller and more manageable.
@@ -452,7 +452,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
     - problems
 
-      - `exp()` is a bit compute expensive. 
+      - `exp()` is a bit compute expensive.
 
   - Maxout activations:
 
@@ -475,7 +475,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
   - ```python
     # Zero centered data. (Calculate the mean for every input).
-    # On of the reasons we do this is because we need data to be between positive and negative and not all the be negative or positive. 
+    # On of the reasons we do this is because we need data to be between positive and negative and not all the be negative or positive.
     X -= np.mean(X, axis = 1)
 
     # Then apply the standard deviation. Hint: in images we don't do this.
@@ -486,7 +486,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
     - Subtract the mean image (E.g. Alexnet)
       - Mean image shape is the same as the input images.
-    - Or Subtract per-channel mean 
+    - Or Subtract per-channel mean
       - Means calculate the mean for each channel of all images. Shape is 3 (3 channels)
 
 - **Weight initialization**:
@@ -506,7 +506,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - The standard deviations is going to zero in deeper networks. and the gradient will vanish sooner in deep networks.
 
     - ```python
-      W = 1 * np.random.rand(D, H) 
+      W = 1 * np.random.rand(D, H)
       # Works OK for small networks but it makes problems with deeper networks!
       ```
 
@@ -543,7 +543,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     1. First we compute the mean and variance^2 of the batch for each feature.
     2. We normalize by subtracting the mean and dividing by square root of (variance^2 + epsilon)
        - epsilon to not divide by zero
-    3. Then we make a scale and shift variables: `Result = gamma * normalizedX + beta`  
+    3. Then we make a scale and shift variables: `Result = gamma * normalizedX + beta`
        - gamma and beta are learnable parameters.
        - it basically possible to say “Hey!! I don’t want zero mean/unit variance input, give me back the raw input - it’s better for me.”
        - Hey shift and scale by what you want not just the mean and variance!
@@ -635,10 +635,10 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
       grad_squared = 0
       while(True):
         dx = compute_gradient(x)
-        
+
         # here is a problem, the grad_squared isn't decayed (gets so large)
-        grad_squared += dx * dx			
-        
+        grad_squared += dx * dx
+
         x -= (learning_rate*dx) / (np.sqrt(grad_squared) + 1e-7)
       ```
 
@@ -648,10 +648,10 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
       grad_squared = 0
       while(True):
         dx = compute_gradient(x)
-        
+
         #Solved ADAgra
-        grad_squared = decay_rate * grad_squared + (1-grad_squared) * dx * dx  
-        
+        grad_squared = decay_rate * grad_squared + (1-grad_squared) * dx * dx
+
         x -= (learning_rate*dx) / (np.sqrt(grad_squared) + 1e-7)
       ```
 
@@ -797,7 +797,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Caffe2 (Facebook)
     - Torch (NYU / Facebook)
     - PyTorch (Facebook)
-    - Theano (U monteral) 
+    - Theano (U monteral)
     - Paddle (Baidu)
     - CNTK (Microsoft)
     - MXNet (Amazon)
@@ -988,7 +988,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Design a good local network topology (network within a network (NiN)) and then stack these modules on top of each other.
     - It consists of:
       - Apply parallel filter operations on the input from previous layer
-        - Multiple convs of sizes (1 x 1, 3 x 3, 5 x 5) 
+        - Multiple convs of sizes (1 x 1, 3 x 3, 5 x 5)
           - Adds padding to maintain the sizes.
         - Pooling operation. (Max Pooling)
           - Adds padding to maintain the sizes.
@@ -1071,7 +1071,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Training ResNet in practice:
       - Batch Normalization after every CONV layer.
       - Xavier/2 initialization from He et al.
-      - SGD + Momentum (`0.9`) 
+      - SGD + Momentum (`0.9`)
       - Learning rate: 0.1, divided by 10 when validation error plateaus
       - Mini-batch size `256`
       - Weight decay of `1e-5`
@@ -1303,7 +1303,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
     - There are an idea of Learnable Upsampling called "**Transpose Convolution**"
 
-      - Rather than making a convolution we make the reverse. 
+      - Rather than making a convolution we make the reverse.
       - Also called:
         - Upconvolution.
         - Fractionally strided convolution
@@ -1498,9 +1498,9 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 - **Feature Inversion**
 
   - Gives us to know what types of elements parts of the image are captured at different layers in the network.
-  - Given a CNN feature vector for an image, find a new image that: 
+  - Given a CNN feature vector for an image, find a new image that:
     - Matches the given feature vector.
-    - *looks natural* (image prior regularization) 
+    - *looks natural* (image prior regularization)
 
 - **Texture Synthesis**
 
@@ -1536,7 +1536,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
 
 
-## 13. Generative models 
+## 13. Generative models
 
 - Generative models are type of Unsupervised learning.
 
@@ -1621,7 +1621,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 
   - Probabilistic spin on Autoencoders - will let us sample from the model to generate data!
   - We have z as the features vector that has been formed using the encoder.
-  - We then choose prior p(z) to be simple, e.g. Gaussian. 
+  - We then choose prior p(z) to be simple, e.g. Gaussian.
     - Reasonable for hidden attributes: e.g. pose, how much smile.
   - Conditional p(x|z) is complex (generates image) => represent with neural network
   - But we cant compute integral for P(z)p(x|z)dz as the following equation:
@@ -1972,7 +1972,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
       - Logistic regression
       - Softmax regression
       - SVMs
-    - Decision trees 
+    - Decision trees
     - Nearest neighbors
 - **<u>Why do adversarial happen?</u>**
   - In the process in trying to understand what is happening, in 2016 they thought it was from overfitting models in the high dimensional data case.
@@ -2029,7 +2029,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
     - Weight decay
     - Dropout
     - Adding noise at train time or at test time
-    - Removing perturbation with an autoencoder 
+    - Removing perturbation with an autoencoder
     - Generative modeling
   - Universal approximator theorem
     - Whatever shape we would like our classification function to have a big enough NN can make it.
@@ -2048,7 +2048,7 @@ After watching all the videos of the famous Standford's [CS231n](http://cs231n.s
 - Conclusion
   - Attacking is easy
   - Defending is difficult
-  - Adversarial training provides regularization and semi-supervised learning 
+  - Adversarial training provides regularization and semi-supervised learning
   - The out-of-domain input problem is a bottleneck for model-based optimization generally
 - There are a Github code that can make you learn everything about adversarial by code (Built above tensorflow):
   - An adversarial example library for constructing attacks, building defenses, and benchmarking both: https://github.com/tensorflow/cleverhans
